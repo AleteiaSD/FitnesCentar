@@ -1,0 +1,2 @@
+vlasnik1;vlasnik1;Bojan;Betrovic;MUSKO;bojan@gmail.com;12/01/1980;VLASNIK;False|Teretana1;Teretana3
+vlasnik2;vlasnik2;Katarina;Tovariski;ZENSKO;katarina@gmail.com;11/03/2000;VLASNIK;False|Teretana2;Teretana4;Teretana5

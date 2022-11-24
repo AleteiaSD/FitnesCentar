@@ -1,0 +1,6 @@
+Njegoseva;33;Stara Pazova;22300|Teretana1;2010;vlasnik1;1500;17000;300;500;2000;False|mika
+Kralja Petra;14;Indjija;22320|Teretana2;2015;vlasnik2;2000;24000;500;700;4000;False|
+Boska Buhe;2;Stara Pazova;22300|Teretana3;2018;vlasnik1;1300;15000;150;300;1500;False|lazar;sladja
+Branka Radicevica;158;Beograd;11000|Teretana4;2009;vlasnik2;4000;30000;600;900;5000;False|
+Kralja Petra;14;Beograd;11000|Teretana5;2022;vlasnik2;3500;40000;700;1000;7000;False|
+Save Kovacevica;33;Stara Pazova;22300|Teretana10;2022;vlasnik2;1000;12000;200;500;1000;False|

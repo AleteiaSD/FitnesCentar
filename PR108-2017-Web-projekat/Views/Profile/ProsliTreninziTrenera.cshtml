@@ -1,0 +1,82 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<GrupniTrening>
+@{
+    ViewBag.Title = "ProsliTreninziTrenera";
+}
+<h2>Prosli treninzi</h2>
+<table>
+    <form method="post" action="~/Profile/PretragaProslihTreningaTrenera">
+        <table border="1" align="left">
+            <tr>
+                <td>Naziv treninga:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Tip treninga:</td>
+                <td><select name="TrainingType">
+                            <option value=" " selected hidden>Izaberi</option>
+                            <option value="YOGA">Yoga</option>
+                            <option value="LESMILLSTONE">Les mills tone</option>
+                            <option value="BODYPUMP">Body pump</option>
+                        </select>                    
+                </td>
+                </tr>
+            <tr>
+                <td>Od: </td>
+                <td><input type="date" name="od"></td>
+            </tr>
+            <tr>
+                <td>Do:</td>
+                <td> <input type="date" name="do"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Pretrazi"></td>
+            </tr>
+        </table>
+        </form>
+</table>
+<br/><br/><br/><br/><br/><br/><br />
+<table>
+    <form method="post" action="~/Profile/SortiranjeProslihTreningaTrenera">
+        <table border="1" align="left">
+            <tr>
+                <td>Sortiraj po:</td>
+                <td>
+                    <select name="sortiranje">
+                        <option value="ImeRastuce">Ime ></option>
+                        <option value="ImeOpadajuce">Ime <</option>
+                        <option value="TipTreningaRastuce">Tip treninga ></option>
+                        <option value="TipTreningaOpadajuce">Tip treninga <</option>
+                        <option value="DatumRastuce">Datum ></option>
+                        <option value="DatumOpadajuce">Datum <</option>
+                    </select>
+
+                </td>
+                <td align="center" colspan="2"><input type="submit" value="Sortiraj" /></td>
+            </tr>
+        </table>
+    </form>
+</table>
+<br /><br />
+<table class="ListTable" border="1" >
+    <tr>
+        <th align="center">Naziv treninga</th>
+        <th align="center">Fitnes centar</thalign="center">
+        <th align="center">Tip treninga</th>
+        <th align="center">Trajanje</th>
+        <th align="center">Datum i vreme</th>
+        <th align="center">Posetioci</th>
+
+    </tr>
+    @foreach (var temp in Model)
+    {
+    <tr>
+        <td align="center">@temp.Naziv</td>
+        <td align="center">@temp.FitnesCentarGdeSeOdrzavaTrening</td>
+        <td align="center">@temp.TipTreninga</td>
+        <td align="center">@temp.TrajanjeTreninga</td>
+        <td align="center">@temp.DatumIVremeTreninga</td>
+        <td align="center"><a href="~/GrupniTrening/Posetioci?fc=@temp.FitnesCentarGdeSeOdrzavaTrening&trening=@temp.Naziv">Vidi</a></td>
+    </tr>
+    }
+</table>

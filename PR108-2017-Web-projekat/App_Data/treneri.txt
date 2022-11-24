@@ -1,0 +1,3 @@
+mika;mika;Mika;Mikic;MUSKO;mika@gmail.com;02/02/2002;TRENER;False|Teretana1|misicnamasa;istezanje
+lazar;lazar;Lazar;Dobrijevic;MUSKO;lazar@gmail.com;31/07/2001;TRENER;False|Teretana1|skakanje
+sladja;sladja;Sladjana;Boskovic;ZENSKO;sladjana@gmail.com;05/08/1989;TRENER;False|Teretana2|

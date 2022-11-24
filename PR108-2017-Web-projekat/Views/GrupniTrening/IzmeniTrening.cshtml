@@ -1,0 +1,37 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model GrupniTreningIzmena
+@{
+    ViewBag.Title = "IzmeniTrening";
+}
+<h2>Izmeni grupni trening</h2>
+
+<form action="~/GrupniTrening/IzmeniTrening" method="post">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Datum i vreme treninga</label>
+            <div class="col-md-10">
+                <input class="form-control" type="datetime-local" name="DatumIVremeTreninga" required value="@Model.DatumIVremeTreninga" />
+                <p>@ViewBag.DateError</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Maksimalan broj posetilaca</label>
+            <div class="col-md-10">
+                <input class="form-control" name="MaksimalanBrojPosetilaca" min="0" max="100" type="number" required value="@Model.MaksimalanBrojPosetilaca" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Trajanje treninga u minutama</label>
+            <div class="col-md-10">
+                <input class="form-control" name="TrajanjeTreninga" min="0" max="300" type="number" required value="@Model.TrajanjeTreninga" />
+            </div>
+        </div>
+        <input hidden type="text" name="Ime" value="@Model.Ime" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Izmeni" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

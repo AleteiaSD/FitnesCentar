@@ -1,0 +1,96 @@
+﻿@using PR108_2017_Web_projekat.Models
+@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<FitnesCentar>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if ((Korisnik)Session["korisnik"] == null)
+{
+    <a class="col-lg-2" style="float:right" href="~/Register/Index">Registruj se</a>
+    <a class="col-lg-2" style="float:right" href="~/Login/Index">Uloguj se</a>
+}
+
+@{
+    if ((Korisnik)Session["korisnik"] != null)
+    {
+        <div class="row" style="text-align:right">
+            @if ((KorisnikUloga)Session["uloga"] == KorisnikUloga.VLASNIK)
+            {
+                <a style="margin-left:10px" href="~/FitnesCentar/MojiFitnesCentri">Moji fitnes centri</a>
+            }
+        </div>
+    }
+}<br/>
+        <table align="left">
+            <form method="post" action="~/Home/Pretraga">
+                <table border="1" align="left">
+                    <tr>
+                        <td align="center" colspan="2">PRETRAGA I SORTIRANJE</td>
+                    </tr>
+                    <tr>
+                        <td>Naziv fitnes centra:</td>
+                        <td><input type="text" name="Naziv"></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td><input type="text" name="Ulica"></td>
+                    </tr>
+                    <tr>
+                        <td>Broj: </td>
+                        <td><input type="number" min="1" name="Broj"></td>
+                    </tr>
+                    <tr>
+                        <td>Mesto/Grad: </td>
+                        <td><input type="text" name="MestoGrad"></td>
+                    </tr>
+                    <tr>
+                        <td>Od:  </td>
+                        <td>  <input type="number" name="Od" min="1"></td>
+                    </tr>
+                    <tr>
+                        <td>Do:  </td>
+                        <td> <input type="number" name="Do" min="1"></td>
+                    </tr>        
+                    <tr>
+                    <td>Sortiraj po:</td>
+                           <td> <select name="sortiraj">
+                                <option value="ImeRastuce">Ime ></option>
+                                <option value="ImeOpadajuce">Ime <</option>
+                                <option value="AdresaRastuce">Adresa ></option>
+                                <option value="AdresaOpadajuce">Adresa <</option>
+                                <option value="GodinaRastuce">Godina ></option>
+                                <option value="GodinaOpadajuce">Godina <</option>
+                            </select>                        
+                    </td>
+                        </tr>
+                    <tr>
+                        <td align="center" colspan="2"><input type="submit" value="Pretrazi"></td>
+                    </tr>
+                </table>
+            </form>
+        </table>
+<br/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br/>
+<h1><b>Fitnes centri</b></h1>
+    <table class="ListTable" border="1" >
+        <tr>
+            <th align="center">Naziv</th>
+            <th align="center">Adresa</th>
+            <th align="center">Godina otvaranja</th>
+            <th align="center" width="50"></th>
+        </tr>
+        @foreach (var temp in Model)
+        {
+            <tr>
+                <td align="center">@temp.Naziv</td>
+                <td align="center">
+                    @temp.Adresa.Ulica
+                    @temp.Adresa.Broj,
+                    @temp.Adresa.MestoGrad
+                </td>
+                <td align="center">@temp.GodinaOtvaranja</td>
+                <td align="center"><a href="~/Home/Detalji?ime=@temp.Naziv">Detalji</a></td>
+            </tr>
+        }
+    </table>
+

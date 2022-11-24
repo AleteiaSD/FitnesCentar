@@ -1,0 +1,10 @@
+stevan;stevan;Stevan;Dobrijevic;MUSKO;stevandobrijevic1@gmail.com;13/01/1999;POSETILAC;False|misicnamasa^Teretana1
+marko;marko;Marko;Markovic;MUSKO;marko@gmail.com;01/01/2001;POSETILAC;False|misicnamasa^Teretana1
+posetilac1;posetilac1;Posetilac1;Prezime1;MUSKO;pos1@gmail.com;01/01/0001;POSETILAC;False|skakanje^Teretana1
+posetilac2;posetilac2;Posetilac2;Prezime2;ZENSKO;pos2@gmail.com;02/12/1989;POSETILAC;False|skakanje^Teretana1
+posetilac3;posetilac3;Posetilac3;Prezime3;MUSKO;pos3@gmail.com;01/01/0001;POSETILAC;False|istezanje^Teretana2
+posetilac4;posetilac4;Posetilac4;Prezime4;MUSKO;pos4@gmail.com;01/01/0001;POSETILAC;False|izdrzaj^Teretana1
+posetilac5;posetilac5;Posetilac5;Prezime5;ZENSKO;pos5@gmail.com;19/06/1975;POSETILAC;False|grudi^Teretana1
+posetilac6;posetilac6;Posetilac6;Prezime6;MUSKO;pos6@gmail.com;01/01/0001;POSETILAC;False|skakanje^Teretana1
+posetilac7;posetilac7;Posetilac7;Prezime7;MUSKO;pos7@gmail.com;01/01/0001;POSETILAC;False|grudi^Teretana1
+zika;zika;Zika;Zikic;MUSKO;zika@gmail.com;22/01/1995;POSETILAC;False|

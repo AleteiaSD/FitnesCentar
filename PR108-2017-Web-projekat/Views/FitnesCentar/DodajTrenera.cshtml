@@ -1,0 +1,26 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<Trener>
+@{
+    ViewBag.Title = "DodajTrenera";
+}
+
+<h2>Zaposli trenera u @ViewBag.FitnesCentar</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Ime</th>
+        <th align="center">Prezime</th>
+        <th align="center">Korisnicko ime</th>
+        <th align="center">Datum rodjenja</th>
+        <th align="center">Zelis trenera?</th>
+    </tr>
+    @foreach (var temp in Model)
+    {
+        <tr>
+            <td align="center">@temp.Ime</td>
+            <td align="center">@temp.Prezime</td>
+            <td align="center">@temp.KorisnickoIme</td>
+            <td align="center">@temp.DatumRodjenja</td>
+            <td align="center"><a href="~/FitnesCentar/ZaposliTrenera?ime=@temp.KorisnickoIme&fcc=@ViewBag.FitnesCentar">Zaposli!</a></td>
+        </tr>
+    }
+</table>

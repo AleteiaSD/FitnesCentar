@@ -1,0 +1,27 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<Komentar>
+@{
+    ViewBag.Title = "KomentarUpit";
+}
+<h2>Komentar upit</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Posetilac</th>
+        <th align="center">Fitnes centar</th>
+        <th align="center">Komentar</th>
+        <th align="center">Ocena</th>
+        <th align="center">Odobren</th>
+        <th align="center">Odbijen</th>
+    </tr>
+    @foreach (var temp in Model)
+    {
+        <tr>
+            <td align="center">@temp.PosetilacKojiJeOstavioKomentar</td>
+            <td align="center">@temp.FitnesCentarNaKojiSeKomentarOdnosi</td>
+            <td align="center">@temp.TekstKomentara</td>
+            <td align="center">@temp.Ocena</td>
+            <td align="center"><a href="~/Komentar/OdobrenKomentar?posetilac=@temp.PosetilacKojiJeOstavioKomentar&fitnescentar=@temp.FitnesCentarNaKojiSeKomentarOdnosi">Odobri</a></td>
+            <td align="center"><a href="~/Komentar/OdbijenKomentar?posetilac=@temp.PosetilacKojiJeOstavioKomentar&fitnescentar=@temp.FitnesCentarNaKojiSeKomentarOdnosi">Odbij</a></td>
+        </tr>
+    }
+</table>

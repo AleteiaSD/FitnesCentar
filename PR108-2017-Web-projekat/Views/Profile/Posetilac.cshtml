@@ -1,0 +1,44 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<GrupniTrening>
+@{
+    ViewBag.Title = "Detalji";
+}
+<div class="row">
+    <a class="col-lg-2" style="float:right" href="~/Profile/Izmeni">Izmeni</a>
+    <a class="col-lg-2" style="float:right" href="~/Profile/ProsliTreninzi">Prosli treninzi</a>
+</div>
+<h2>Informacije o posetiocu @ViewBag.Model.Ime</h2>
+<table class="dl-horizontal" border="1">
+    <tr>
+        <th align="center">Ime</th>
+        <th align="center">Prezime</th>
+        <th align="center">Korisnicko ime</th>
+        <th align="center">Uloga</th>
+    </tr>
+    <tr>
+        <td align="center">@ViewBag.Model.Ime</td>
+        <td align="center">@ViewBag.Model.Prezime</td>
+        <td align="center">@ViewBag.Model.KorisnickoIme</td>
+        <td align="center">@ViewBag.Model.Uloga</td>
+    </tr>
+</table>
+<h2>Buduci treninzi</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Naziv treninga</th>
+        <th align="center">Fitnes centar</th>
+        <th align="center">Tip treninga</th>
+        <th align="center">Trajanje</th>
+        <th align="center">Datum i vreme</th>
+    </tr>
+    @foreach (var temp in Model)
+    {
+        <tr>
+            <td align="center">@temp.Naziv</td>
+            <td align="center">@temp.FitnesCentarGdeSeOdrzavaTrening</td>
+            <td align="center">@temp.TipTreninga</td>
+            <td align="center">@temp.TrajanjeTreninga</td>
+            <td align="center">@temp.DatumIVremeTreninga</td>
+        </tr>
+    }
+</table>

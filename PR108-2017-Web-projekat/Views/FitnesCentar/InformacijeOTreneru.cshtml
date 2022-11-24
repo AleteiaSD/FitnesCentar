@@ -1,0 +1,44 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model InformacijeOTreneru
+@{
+    ViewBag.Title = "InformacijeOTreneru";
+}
+<h2>Informacije o treneru</h2>
+<h2>Treneri sa buducim treninzima</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Ime</th>
+        <th align="center">Prezime</th>
+        <th align="center">Korisnicko ime</th>
+        <th align="center">Datum rodjenja</th>
+    </tr>
+    @foreach (var temp in Model.NijeObrisan)
+    {
+        <tr>
+            <td align="center">@temp.Ime</td>
+            <td align="center">@temp.Prezime</td>
+            <td align="center">@temp.KorisnickoIme</td>
+            <td align="center">@temp.DatumRodjenja.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+<h2>Slobodni treneri</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Ime</th>
+        <th align="center">Prezime</th>
+        <th align="center">Korisnicko ime</th>
+        <th align="center">Datum rodjenja</th>
+        <th align="center">Blokiraj trenera</th>
+    </tr>
+    @foreach (var temp in Model.Obrisan)
+    {
+    <tr>
+        <td align="center">@temp.Ime</td>
+        <td align="center">@temp.Prezime</td>
+        <td align="center">@temp.KorisnickoIme</td>
+        <td align="center">@temp.DatumRodjenja.ToShortDateString()</td>
+        <td align="center"><a href="~/FitnesCentar/BlokirajTrenera?ime=@temp.KorisnickoIme">Blokiraj</a></td>
+    </tr>
+    }
+</table>

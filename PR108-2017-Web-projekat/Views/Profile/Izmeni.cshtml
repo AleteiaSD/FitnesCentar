@@ -1,0 +1,34 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model ProfileModel
+@{
+    ViewBag.Title = "Izmeni";
+}
+<h2>Izmeni podatke</h2>
+<form action="~/Profile/Izmeni" method="post">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Lozinka</label>
+            <div class="col-md-10">
+                <input class="form-control" type="password" name="lozinka" required value="@Model.Lozinka" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ime</label>
+            <div class="col-md-10">
+                <input class="form-control" name="ime" required value="@Model.Ime" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Prezime</label>
+            <div class="col-md-10">
+                <input class="form-control" name="prezime" required value="@Model.Prezime" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Izmeni" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

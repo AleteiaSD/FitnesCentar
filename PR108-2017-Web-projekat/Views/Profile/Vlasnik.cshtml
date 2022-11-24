@@ -1,0 +1,58 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<FitnesCentar>
+@{
+    ViewBag.Title = "Vlasnik";
+}
+<div class="row">
+    <a class="col-lg-2" style="float:right" href="~/Profile/Izmeni">Izmeni</a>
+</div>
+<h2>Informacije o vlasniku @ViewBag.Model.Ime</h2>
+
+<table class="dl-horizontal" border="1">
+    <tr>
+        <th align="center">Ime</th>
+        <th align="center">Prezime</th>
+        <th align="center">Korisnicko ime</th>
+        <th align="center">Uloga</th>
+    </tr>
+    <tr>
+        <td align="center">@ViewBag.Model.Ime</td>
+        <td align="center">@ViewBag.Model.Prezime</td>
+        <td align="center">@ViewBag.Model.KorisnickoIme</td>
+        <td align="center">@ViewBag.Model.Uloga</td>
+    </tr>
+</table>
+<h2>Moji fitnes centri</h2>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Fitnes centar</th>
+        <th align="center">Adresa</th>
+        <th align="center">Mesto/Grad</th>
+        <th align="center">Postanski broj</th>
+        <th align="center">Treneri</th>
+        <th align="center">Dodaj trenera</th>
+    </tr>
+    @foreach (var temp in Model)
+    {
+    <tr>
+        <td align="center">@temp.Naziv</td>
+        <td align="center">@temp.Adresa.Ulica @temp.Adresa.Broj</td>
+        <td align="center">@temp.Adresa.MestoGrad</td>
+        <td align="center">@temp.Adresa.PostanskiBroj</td>
+        @if (temp.Trener.Count == 0)
+        {
+            <td align="center">Nema trenera</td>
+        }
+        else
+        {
+            <td align="center">
+                @foreach (string s in temp.Trener)
+                {
+                    <p>@s</p>
+                }
+            </td>
+        }
+        <td><a href="~/FitnesCentar/Dodaj?ime=@temp.Naziv">Dodaj trenera</a></td>
+    </tr>
+    }
+</table>

@@ -1,0 +1,63 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori
+@model  RegistrationModel
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Registracija</h2>
+<form action="~/Register/Index" method="post">
+    
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Korisnicko ime</label>
+            <div class="col-md-10">
+                <input class="form-control" name="korisnickoime" required value="@Model.KorisnickoIme" />
+                <p>@ViewBag.UsernameError</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Lozinka</label>
+            <div class="col-md-10">
+                <input class="form-control" type="password" name="lozinka" required value="@Model.Lozinka" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ime</label>
+            <div class="col-md-10">
+                <input class="form-control" name="ime" required value="@Model.Ime" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Prezime</label>
+            <div class="col-md-10">
+                <input class="form-control" name="prezime" required value="@Model.Prezime" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Date of Birth</label>
+            <div class="col-md-10">
+                <input class="form-control" type="date" name="DatumRodjenja" required value="@Model.DatumRodjenja.ToShortDateString()" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Pol</label>
+            <div class="col-md-10">
+                <input type="radio" name="pol" value="MUSKO" checked />
+                <label>Musko</label>
+                <input type="radio" name="pol" value="ZENSKO" />
+                <label>Zensko</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                <input class="form-control" name="email" required value="@Model.Email" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registruj se" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

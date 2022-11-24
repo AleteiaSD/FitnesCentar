@@ -1,0 +1,43 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model IEnumerable<FitnesCentar>
+@{
+    ViewBag.Title = "MojiFitnesCentri";
+}
+<div class="row">
+
+<a class="col-lg-2" style="float:right"  href="~/FitnesCentar/KreirajFitnesCentar">Kreiraj fitnes centar</a>
+<a class="col-lg-2" style="float:right"  href="~/FitnesCentar/InformacijeOTreneru">Treneri</a>
+<a class="col-lg-2"  style="float:right" href="~/Komentar/KomentarUpit">Zahtevi za komentare</a>
+    </div>
+<h2>Moji fitnes centri</h2>
+<table class="ListTable" border="1"> 
+    <tr>
+        <th align="center">Fitnes centar</th>
+        <th align="center">Adresa</th>
+        <th align="center">MestoGrad</th>
+        <th align="center">Postanski broj</th>
+        <th align="center">Izmeni fitnes centar</th>
+        <th align="center">Ugasi fitnes centar</th>
+    </tr>
+    @foreach (var temp in Model)
+    {
+        <tr>
+            <td align="center">@temp.Naziv</td>
+            <td align="center">
+                @temp.Adresa.Ulica
+            @temp.Adresa.Broj
+        </td>
+        <td align="center">@temp.Adresa.MestoGrad</td>
+        <td align="center">@temp.Adresa.PostanskiBroj</td>
+        <td align="center"><a href="~/FitnesCentar/IzmeniFitnesCentar?ime=@temp.Naziv">Izmeni</a></td>
+        @if (ViewBag.HasGroup.Contains(temp.Naziv))
+        {
+            <td align="center">Postoje grupni treninzi za ovaj fitnes centar!</td>
+        }
+        else
+        {
+            <td align="center"><a href="~/FitnesCentar/ObrisiFitnesCentar?ime=@temp.Naziv">Obrisi</a></td>
+        }
+    </tr>
+}
+</table>

@@ -1,0 +1,96 @@
+﻿@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model FitnesCentarKreiranje
+@{
+    ViewBag.Title = "IzmeniFitnesCentar";
+}
+<h2>Izmeni fitnes centar</h2>
+<form action="~/FitnesCentar/IzmeniFitnesCentar" method="post">
+    <div class="form-horizontal">
+        <hr />
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label col-md-5">Naziv</label>
+                    <div class="col-md-7">
+                        <input class="form-control" name="Naziv" required readonly value="@Model.Naziv" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Mesto/Grad</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="MestoGrad" required value="@Model.MestoGrad" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Ulica</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="Ulica" required value="@Model.Ulica" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Broj</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" name="Broj" required value="@Model.Broj" />
+                        <p>@ViewBag.NumStreetError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Postanski broj</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" name="PostanskiBroj" maxlength="5" required value="@Model.PostanskiBroj" />
+                        <p>@ViewBag.PostalNumError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Godina otvaranja</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="GodinaOtvaranja" readonly required value="@DateTime.Now.ToString("yyyy")" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label col-md-5">Cena mesecne clanarine</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" min="0" name="CenaMesecneClanarine" required value="@Model.CenaMesecneClanarine" />
+                        <p>@ViewBag.MonthlyPriceError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Cena godisnje clanarine</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" min="0" name="CenaGodisnjeClanarine" required value="@Model.CenaGodisnjeClanarine" />
+                        <p>@ViewBag.AnnualPriceError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Cena jednog treninga</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" min="0" name="CenaJednogTreninga" required value="@Model.CenaJednogTreninga" />
+                        <p>@ViewBag.PricePerTrainingError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Cena jednog grupnog treninga</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" min="0" name="CenaJednogGrupnogTreninga" required value="@Model.CenaJednogGrupnogTreninga" />
+                        <p>@ViewBag.PricePerGroupTrainingError</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-5">Cena jednog treninga sa personalnim trenerom</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="number" min="0" name="CenaJednogTreningaSaPersonalnimTrenerom" required value="@Model.CenaJednogTreningaSaPersonalnimTrenerom" />
+                        <p>@ViewBag.PriceWithPersonalTrainerError</p>
+                    </div>
+                    <input hidden name="StaroIme" value="@Model.Naziv" readonly />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-10 col-md-12">
+                        <input type="submit" value="Izmeni" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

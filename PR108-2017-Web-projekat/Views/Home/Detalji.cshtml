@@ -1,0 +1,140 @@
+﻿@using PR108_2017_Web_projekat.Models
+@using PR108_2017_Web_projekat.Models.Konstruktori;
+@model PR108_2017_Web_projekat.Models.Konstruktori.FCDetalji
+
+@{
+    ViewBag.Title = "Detalji";
+}
+@if ((Korisnik)Session["korisnik"] == null)
+{   <a class="col-lg-2" style="float:right" href="~/Register/Index">Registruj se</a>
+    <a class="col-lg-2" style="float:right" href="~/Login/Index"> Uloguj se</a>}
+<h2>Detalji za @Model.FCNaziv.Naziv</h2>
+<table class="dl-horizontal" border="1">
+    <tr>
+        <th align="center">Naziv</th>
+        <th align="center">Adresa</th>
+        <th align="center">Postanski broj</th>
+        <th align="center">Cena jednog treninga</th>
+        <th align="center">Cena jednog grupnog treninga</th>
+        <th align="center">Cena treninga sa personalnim trenerom</th>
+        <th align="center">Cena mesecne clanarine</th>
+        <th align="center">Cena godisnje clanarine</th>
+        <th align="center">Treneri</th>
+        <th align="center">Vlasnik</th>
+    </tr>
+    <tr>
+        <td align="center">@Model.FCNaziv.Naziv</td>
+        <td align="center">@Model.FCNaziv.Adresa.Ulica @Model.FCNaziv.Adresa.Broj, @Model.FCNaziv.Adresa.MestoGrad</td>
+        <td align="center">@Model.FCNaziv.Adresa.PostanskiBroj</td>
+        <td align="center">@Model.FCNaziv.CenaJednogTreninga</td>
+        <td align="center">@Model.FCNaziv.CenaJednogGrupnogTreninga</td>
+        <td align="center">@Model.FCNaziv.CenaJednogTreningaSaPersonalnimTrenerom</td>
+        <td align="center">@Model.FCNaziv.CenaMesecneClanarine</td>
+        <td align="center">@Model.FCNaziv.CenaGodisnjeClanarine</td>
+        <td align="center">
+            @foreach (string temp in Model.FCNaziv.Trener)
+            {@temp}
+        </td>
+        <td align="center">@Model.FCNaziv.Vlasnik</td>
+    </tr>
+</table>
+
+<h2>Grupni treninzi (Mozete se pridruziti)</h2>
+
+
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Naziv</th>
+        <th align="center">Tip treninga</th>
+        <th align="center">Trajanje treninga</th>
+        <th align="center">Datum i vreme treninga</th>
+        <th align="center">Maksimalan broj posetilaca</th>
+        <th align="center">Trenutni broj posetilaca</th>
+        @if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.POSETILAC)
+        {
+            <th align="center">Pridruzite se treningu</th>
+        }
+    </tr>
+    @foreach (var temp in Model.listGrupniTreninzi)
+    {
+        <tr>
+            <td align="center">@temp.Naziv</td>
+            <td align="center">@temp.TipTreninga</td>
+            <td align="center">@temp.TrajanjeTreninga</td>
+            <td align="center">@temp.DatumIVremeTreninga</td>
+            <td align="center">@temp.MaksimalanBrojPosetilaca</td>
+            <td align="center">@temp.TrentniBrojPosetilaca</td>
+            @if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.POSETILAC)
+            {
+                if (temp.TrentniBrojPosetilaca == temp.MaksimalanBrojPosetilaca)
+                {
+                    <td align="center">Kapaciteti su popunjeni</td>
+                }
+                else if (temp.TrentniBrojPosetilaca < temp.MaksimalanBrojPosetilaca)
+                {
+                    <td align="center"><a href="~/GrupniTrening/PridruziSe?fcIme=@temp.FitnesCentarGdeSeOdrzavaTrening&trIme=@temp.Naziv"> Pridruzi se</a></td>
+                }
+            }
+        </tr>
+    }
+</table>
+
+@if (ViewBag.ErrorJoin != null)
+{
+    <script>alert("Vec ste na treningu!");</script>
+}
+<h3> Komentari o fitnes centru</h3>
+<table class="ListTable" border="1">
+    <tr>
+        <th align="center">Posetilac</th>
+        <th align="center">Fitnes centar</th>
+        <th align="center">Komentar</th>
+        <th align="center">Ocena</th>
+        @if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.VLASNIK)
+        {
+            <th align="center">Odobreno</th>
+        }
+    </tr>
+    @foreach (var temp in Model.Odobren)
+    {
+        <tr>
+            <td align="center">@temp.PosetilacKojiJeOstavioKomentar</td>
+            <td align="center">@temp.FitnesCentarNaKojiSeKomentarOdnosi</td>
+            <td align="center">@temp.TekstKomentara</td>
+            <td align="center">@temp.Ocena</td>
+            @if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.VLASNIK)
+            {
+                <td>Odobreno</td>
+            }
+        </tr>
+    }
+    @if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.VLASNIK)
+    {
+        foreach (var temp in Model.Odbijen)
+        {
+            <tr>
+                <td align="center">@temp.PosetilacKojiJeOstavioKomentar</td>
+                <td align="center">@temp.FitnesCentarNaKojiSeKomentarOdnosi</td>
+                <td align="center">@temp.TekstKomentara</td>
+                <td align="center">@temp.Ocena</td>
+                <td align="center">Odbijen</td>
+            </tr>
+        }
+    }
+</table>
+@if ((Korisnik)Session["korisnik"] != null && (KorisnikUloga)Session["uloga"] == KorisnikUloga.POSETILAC)
+{
+    <a href="~/Komentar/DodajKomentar?fitnescentar=@Model.FCNaziv.Naziv">Dodaj komentar</a>
+    if (ViewBag.CommentError != null)
+    {
+        <script>
+            alert("Vec ste komentarisali ovaj fitnes centar!");
+        </script>
+    }
+    else if (ViewBag.CantCommError != null)
+    {
+        <script>
+            alert("Niste trenirali u ovom fitnes centru, nemate prava na komentar!");
+        </script>
+    }
+}

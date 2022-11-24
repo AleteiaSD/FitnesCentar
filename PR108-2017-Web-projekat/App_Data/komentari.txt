@@ -1,0 +1,4 @@
+marko;Teretana2;Prosecna teretana;3;True;False
+posetilac1;Teretana1;Odlicna teretana, sve pohvale;5;True;False
+posetilac2;Teretana1;Nije dobra teretana;1;False;True
+posetilac4;Teretana1;Solidna teretana;3;False;False
